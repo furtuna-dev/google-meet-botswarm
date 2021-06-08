@@ -1,10 +1,11 @@
 var fs = require('fs');
 var Nightmare = require('nightmare');
+var stdin = process.openStdin();
 
 
 function onExit(){
     console.log('Exiting and cleaning up...');
-    process.exit(0);
+    process.exit(1);
     process.kill();
 };
 
@@ -38,8 +39,10 @@ fs.readFile("details.json", "utf8", function(err, data){
         .then();
     }
     console.log('Done! (It takes a while to add all the bots into the meeting)')
-    console.log('Close this window to remove all the bots');
+    console.log('\nPress any key to close the programm. ( Do not close it by pressing alt+f4 or something like that. Close it only by pressing any key)\n');
 });
+
+process.stdin.on('data', onExit.bind());
 
 process.on('exit', onExit.bind());
 process.on('SIGUSR1', onExit.bind());
