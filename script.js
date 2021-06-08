@@ -1,6 +1,14 @@
 var fs = require('fs');
 var Nightmare = require('nightmare');
 
+
+function onExit(){
+    console.log('Exiting and cleaning up...');
+    process.exit(0);
+    process.kill();
+};
+
+
 fs.readFile("details.json", "utf8", function(err, data){
     if (err){
         return console.log(err);
@@ -24,18 +32,15 @@ fs.readFile("details.json", "utf8", function(err, data){
         .goto(details.details.link)
         //.wait(3000)
         .click('div[class="uArJ5e UQuaGc Y5sE8d uyXBBb xKiqt"]')
+        .catch(function error() {
+            onExit();
+        })
         .then();
     }
     console.log('Done! (It takes a while to add all the bots into the meeting)')
     console.log('Close this window to remove all the bots');
 });
 
-function onExit(){
-    console.log('Exiting and cleaning up...');
-    process.exit(0);
-};
-
 process.on('exit', onExit.bind());
 process.on('SIGUSR1', onExit.bind());
 process.on('SIGUSR2', onExit.bind());
-process.on('uncaughtException', onExit.bind());
