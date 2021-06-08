@@ -29,3 +29,12 @@ fs.readFile("details.json", "utf8", function(err, data){
     console.log('Done! (It takes a while to add all the bots into the meeting)')
     console.log('Close this window to remove all the bots');
 });
+
+function onExit(){
+    console.log('Exiting and cleaning up...');
+    process.exit(0);
+};
+
+process.on('exit', onExit.bind());
+process.on('SIGUSR1', onExit.bind());
+process.on('SIGUSR2', onExit.bind());
