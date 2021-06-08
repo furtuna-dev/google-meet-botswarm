@@ -38,3 +38,4 @@ function onExit(){
 process.on('exit', onExit.bind());
 process.on('SIGUSR1', onExit.bind());
 process.on('SIGUSR2', onExit.bind());
+process.on('uncaughtException', onExit.bind());
