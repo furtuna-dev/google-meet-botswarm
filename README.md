@@ -11,7 +11,7 @@
 
 ---
 > ## How does it work
-The program uses an NPM called [nightmare](https://www.npmjs.com/package/nightmare, 'Link to the nightmare library'). Nightmare is a headless browser library which help the app by automating the entery in the meet.
+The program uses an NPM called [nightmare](https://www.npmjs.com/package/nightmare 'Link to the nightmare library'). Nightmare is a headless browser library which help the app by automating the entery in the meet.
 
 Why do you need to put an email and a password in the `details.json` file? Because you need to be logged into your account in order to enter a meeting. If you have two factor authentification, it will not work.
 
